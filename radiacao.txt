@@ -1,0 +1,55 @@
+d - Por quê o R2 Ajustado modifica o valor do R2 baseado na quantidade de preditores utilizados no modelo. Dessa forma, ela penaliza a adição de preditores que não ajudam na explicação da variável dependente
+
+r2: 0.8431
+r2 ajustado: 0.8425
+
+Não
+
+e -
+
+modelo base
+r2: 0.8431
+r2 ajustado: 0.8425
+rmse: 233.5167
+mae: 187.5942
+mse: 54530.0719
+
+modelo alternativo
+r2: 0.0807
+r2 ajustado: 0.0790
+rmse: 565.2392
+mae: 464.2573
+mse: 319495.3285
+
+O modelo base foi melhor, pois ele apresenta o maior R2, indicando que o modelo explica 84,31% da variabilidade dos dados. Além disso, apresentou menor RMSE, mostrando que o erro de previsão do modelo é de 233,51 unidades.
+
+
+f - 
+
+No caso o intercepto seja 0 o modelo assume que y = 0 casa todos os regressores sejam igual a 0. Nesse contexto, caso o tempo de exposição
+
+com intercepto
+r2: 0.8431
+rmse: 233.5167
+
+sem intercepto
+r2: 0.7631
+rmse: 286.9186
+
+Com base em R2 e RMSE observados o melhor modelo é o com intercepto, pois o mesmo consegue explicar 84,31% da variabilidade dos dados e possui a menor magnitude de erro de previsão.
+
+h - 
+
+modelo base
+r2: 0.8431
+rmse: 233.5167
+mae: 187.5942
+
+modelo alternativo
+r2: 0.0807
+rmse: 565.2392
+mae: 464.2573
+
+Usando as métricas de avaliação R2, RMSE e MAE. O modelo base se destaca por possuir o R2 igual á 0,8431 indicando que o modelo explica 84,31% da variabilidade dos dados, o MAE indicando que a diferença média absoluta entre os dados observados e previstos são de 187,59 unidades enquanto o RMSE de 233,51 mostra que a magnitude do erro entre valor observado e previsto, atribuindo maior peso as resíduos de maior magnitude.
+
+Enquanto o modelo alternativo, usando a corrente como regressor, possui R2 de 0,0807 indicando que ele explica apenas 8,07% da variabilidade dos dados, MAE mostrando que a diferença média absoluta entre os dados observados e previstos são de 464,25 unidades e o RMSE mostra que a magnitude do erro entre o valor observado e previsto foi de 565,23 unidades.
