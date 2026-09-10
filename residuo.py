@@ -1,6 +1,5 @@
 import numpy as np
 
-
 def tabela_residuos(y_true, y_pred, nome_csv:str="./tabela_residuos.csv"):
     residuos = y_true - y_pred
     observacao = np.arange(1, len(y_true)+1)
