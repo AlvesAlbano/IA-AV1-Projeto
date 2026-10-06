@@ -12,8 +12,9 @@ class MRegression:
 
         if not self.sem_intercepto:
             self.X = np.column_stack((np.ones(self.N), self.X))
+
         self.beta = np.linalg.pinv(self.X.T @ self.X) @ self.X.T @ self.y
-        #peseudo-inversa Moore-Pensore, matrizes nao quadraticas ou singulares
+        #pseudo-inversa Moore-Pensore, matrizes nao quadraticas ou singulares
     
     def predict(self,X_new):
         N = X_new.shape[0]

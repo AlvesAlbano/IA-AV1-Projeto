@@ -1,0 +1,2 @@
+Classificador;Acurácia;Precisão;Revocação;F1-Score;Tempo Treino (s);Tempo Teste (s)
+KNN (Distância Manhattan);0.9971;0.9988;0.9963;0.9975;0.00;19.73

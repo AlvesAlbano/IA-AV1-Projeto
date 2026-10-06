@@ -1,0 +1,2 @@
+Classificador;Acurácia;Precisão;Revocação;F1-Score;Tempo Treino (s);Tempo Teste (s)
+KNN (Distância Euclidiana);0.9949;0.9987;0.9925;0.9956;0.00;21.71

@@ -1,6 +1,6 @@
 import numpy as np
 
-def r2_score(y_true, y_pred) -> float:
+def r2_score(y_true, y_pred):
     numerador = np.sum((y_true - y_pred)**2)
     denominador = np.sum((y_true-np.mean(y_true))**2)
     r_score = 1 - (numerador/denominador)
