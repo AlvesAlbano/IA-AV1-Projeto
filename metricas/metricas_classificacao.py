@@ -1,11 +1,11 @@
 import numpy as np
 
-def matriz_confusao(y_pred,y_test):
+def matriz_confusao(y_test,y_pred):
     classes = np.unique(
-        np.concatenate((y_pred,y_test))
+        np.concatenate((y_test,y_pred))
     )
 
-    matriz_confu = np.zeros(
+    matriz = np.zeros(
         (len(classes),len(classes)),dtype=int
     )
 
@@ -13,9 +13,9 @@ def matriz_confusao(y_pred,y_test):
         i = np.where(classes == real)[0][0]
         j = np.where(classes == previsto)[0][0]
 
-        matriz_confu[i,j] += 1
+        matriz[i,j] += 1
         
-    return classes, matriz_confu
+    return classes, matriz
 
 def accuracy(VP,FN,FP,VN):
     return (VN + VP) / (VP + FN + FP + VN)

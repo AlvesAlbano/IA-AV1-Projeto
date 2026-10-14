@@ -1,0 +1,11 @@
+Classificador;R2;R2 Ajustado;Tempo Treino (s);Tempo Teste (s)
+KNN Regressão (Distância Manhattan);0.2172;0.2136;0.00;40.59
+KNN Regressão (Distância Manhattan);0.6796;0.6781;0.00;38.40
+KNN Regressão (Distância Manhattan);0.3994;0.3965;0.00;45.49
+KNN Regressão (Distância Manhattan);0.7021;0.7007;0.00;39.11
+KNN Regressão (Distância Manhattan);0.7202;0.7189;0.00;39.11
+KNN Regressão (Distância Manhattan);0.4222;0.4195;0.00;39.45
+KNN Regressão (Distância Manhattan);0.2015;0.1978;0.00;38.88
+KNN Regressão (Distância Manhattan);0.6918;0.6903;0.00;38.73
+KNN Regressão (Distância Manhattan);0.6191;0.6173;0.00;38.75
+KNN Regressão (Distância Manhattan);0.6829;0.6814;0.00;39.12

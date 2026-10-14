@@ -1,6 +1,6 @@
 import numpy as np
 
-def k_fold_indices(X,shuffle:bool=False,random_state:int=42,k=10):
+def k_fold_indices(X,shuffle:bool=False,random_state:int=42,n_split=10):
     folds = []
 
     idx_fold = np.arange(len(X))
@@ -9,8 +9,8 @@ def k_fold_indices(X,shuffle:bool=False,random_state:int=42,k=10):
         embaralho = np.random.default_rng(random_state)
         embaralho.shuffle(idx_fold)
 
-    tamanhos = np.full(k, len(X) // k)
-    tamanhos[:len(X) % k] += 1
+    tamanhos = np.full(n_split, len(X) // n_split)
+    tamanhos[:len(X) % n_split] += 1
 
     inicio = 0
 
@@ -29,10 +29,10 @@ def k_fold_indices(X,shuffle:bool=False,random_state:int=42,k=10):
 
     return folds
 
-def k_fold_estratificado_indices(X,y,shuffle:bool=False,random_state:int=42,k:int=10):
+def k_fold_estratificado_indices(X,y,shuffle:bool=False,random_state:int=42,n_split:int=10):
 
     folds = [
-        [] for fold in range(k)
+        [] for fold in range(n_split)
     ]
 
     for classe in np.unique(y):
@@ -43,13 +43,13 @@ def k_fold_estratificado_indices(X,y,shuffle:bool=False,random_state:int=42,k:in
             embaralho.shuffle(idxs)
 
         for i,idx in enumerate(idxs):
-            folds[i % k].append(idx)
+            folds[i % n_split].append(idx)
 
     todos_idx = np.arange(len(X))
 
     idx_fold = []
 
-    for i in range(k):
+    for i in range(n_split):
         idx_teste = np.array(folds[i])
         idx_treino = np.setdiff1d(todos_idx,idx_teste)
 
@@ -118,6 +118,7 @@ def medidas_metricas_classificacao(csv:str):
         print(f"desvio padrão: {np.std(metrica,ddof=1):.2f}")
 
 if __name__ == "__main__":
+
     print("------ Regressão Linear Multipla ------")
     medidas_metricas_regressao("./resultados/individuais/Regressão Linear Multipla/Regressão Linear Multipla_resultado.csv")
 

@@ -3,6 +3,7 @@ import numpy as np
 
 from metricas.metricas_regressao import *
 from modelos.regressao_multipla import MRegression
+from modelos.knn import KNN
 from validacao_cruzada import k_fold_indices
 from tabela import tabela_informativa_regressao
 
@@ -35,6 +36,81 @@ def regressao_linear_multipla(X_train, X_test, y_train, y_test):
 
     tabela_informativa_regressao(X_test,y_test,y_pred,"Regressão Linear Multipla",tempo_treino,tempo_teste)
 
+def regressao_euclidiana(X_train, X_test, y_train, y_test,k_valor):
+
+    modelo = KNN(task="regressão",distancia="euclidiana",k=k_valor)
+    
+    inicio = time.perf_counter()
+    modelo.fit(X_train,y_train)
+    fim = time.perf_counter()
+
+    tempo_treino = fim - inicio
+    print(f"treino durou {tempo_treino:.2f}s")
+    
+    inicio = time.perf_counter()
+    y_pred = modelo.predict(X_test)
+    fim = time.perf_counter()
+
+    tempo_teste = fim - inicio
+    print(f"predição durou {tempo_teste:.2f}s")
+
+    r2 = r2_score(y_test,y_pred)
+    r2_ajustado = r2_score_ajustado(r2,X_test)
+
+    # print(r2)
+    # print(r2_ajustado)
+
+    print("----------- KNN Regressão (Distância Euclidiana) -----------")
+    print(f"R2 SCORE: {r2:.4f}")
+    print(f"R2 SCORE AJUSTADO: {r2_ajustado:.4f}")
+
+    tabela_informativa_regressao(X_test,y_test,y_pred,"KNN Regressão (Distância Euclidiana)",tempo_treino,tempo_teste)
+
+def regressao_manhattan(X_train, X_test, y_train, y_test,k_valor):
+
+    modelo = KNN(task="regressão",distancia="manhattan",k=k_valor)
+    
+    inicio = time.perf_counter()
+    modelo.fit(X_train,y_train)
+    fim = time.perf_counter()
+
+    tempo_treino = fim - inicio
+    print(f"treino durou {tempo_treino:.2f}s")
+    
+    inicio = time.perf_counter()
+    y_pred = modelo.predict(X_test)
+    fim = time.perf_counter()
+
+    tempo_teste = fim - inicio
+    print(f"predição durou {tempo_teste:.2f}s")
+
+    r2 = r2_score(y_test,y_pred)
+    r2_ajustado = r2_score_ajustado(r2,X_test)
+
+    print("----------- KNN Regressão (Distância Manhattan) -----------")
+    print(f"R2 SCORE: {r2:.4f}")
+    print(f"R2 SCORE AJUSTADO: {r2_ajustado:.4f}")
+
+    tabela_informativa_regressao(X_test,y_test,y_pred,"KNN Regressão (Distância Manhattan)",tempo_treino,tempo_teste)
+
+def kfold_regressao(X,y):
+    k_valor = 15
+
+    idx_fold = k_fold_indices(X)
+
+    for idx_treino, idx_validacao in idx_fold:
+        
+        X_train, y_train, = X[idx_treino], y[idx_treino]
+        X_test, y_test = X[idx_validacao], y[idx_validacao]
+
+        print("---------------- REGRESSÃO USANDO A DISTÂNCIA EUCLIDIANA ----------------")
+        regressao_euclidiana(X_train, X_test, y_train, y_test,k_valor)
+        
+        print("---------------- REGRESSÃO USANDO A DISTÂNCIA DE MANHATTAN ----------------")
+        regressao_manhattan(X_train, X_test, y_train, y_test,k_valor)
+
+        print("---------------- REGRESSÃO LINEAR MULTIPLA ----------------")
+        regressao_linear_multipla(X_train, X_test, y_train, y_test)
 
 if __name__ == "__main__":
     data_csv = np.loadtxt("./data/csv_result-dataset_44990_brazilian_houses.csv",delimiter=",",skiprows=1,usecols=(2,3,4,5,9,13))
@@ -48,11 +124,4 @@ if __name__ == "__main__":
     print(f"Dimensões de X: {X.shape}")
     print(f"Dimensões de y: {y.shape}")
 
-    idx_fold = k_fold_indices(X)
-
-    for idx_treino, idx_validacao in idx_fold:
-        
-        X_train, y_train, = X[idx_treino], y[idx_treino]
-        X_test, y_test = X[idx_validacao], y[idx_validacao]
-
-        regressao_linear_multipla(X_train, X_test, y_train, y_test)
+    kfold_regressao(X,y)

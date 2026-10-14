@@ -1,0 +1,11 @@
+Classificador;Acurácia;Precisão;Revocação;F1-Score;Tempo Treino (s);Tempo Teste (s)
+KNN Classificação (Distância Manhattan);0.9957;0.9928;1.0000;0.9964;0.00;7.38
+KNN Classificação (Distância Manhattan);0.9935;0.9892;1.0000;0.9946;0.00;7.00
+KNN Classificação (Distância Manhattan);0.9913;0.9857;1.0000;0.9928;0.00;8.06
+KNN Classificação (Distância Manhattan);0.9957;0.9928;1.0000;0.9964;0.00;6.89
+KNN Classificação (Distância Manhattan);0.9935;0.9892;1.0000;0.9946;0.00;6.87
+KNN Classificação (Distância Manhattan);0.9978;0.9964;1.0000;0.9982;0.00;6.96
+KNN Classificação (Distância Manhattan);0.9978;0.9964;1.0000;0.9982;0.00;6.88
+KNN Classificação (Distância Manhattan);1.0000;1.0000;1.0000;1.0000;0.00;6.91
+KNN Classificação (Distância Manhattan);1.0000;1.0000;1.0000;1.0000;0.00;6.90
+KNN Classificação (Distância Manhattan);1.0000;1.0000;1.0000;1.0000;0.00;6.90

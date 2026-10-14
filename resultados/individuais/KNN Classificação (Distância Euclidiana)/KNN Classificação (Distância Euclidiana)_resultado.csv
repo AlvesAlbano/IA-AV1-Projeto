@@ -1,0 +1,11 @@
+Classificador;Acurácia;Precisão;Revocação;F1-Score;Tempo Treino (s);Tempo Teste (s)
+KNN Classificação (Distância Euclidiana);0.9935;0.9892;1.0000;0.9946;0.00;8.13
+KNN Classificação (Distância Euclidiana);0.9913;0.9857;1.0000;0.9928;0.00;7.76
+KNN Classificação (Distância Euclidiana);0.9913;0.9857;1.0000;0.9928;0.00;7.96
+KNN Classificação (Distância Euclidiana);0.9957;0.9928;1.0000;0.9964;0.00;7.84
+KNN Classificação (Distância Euclidiana);0.9935;0.9892;1.0000;0.9946;0.00;7.48
+KNN Classificação (Distância Euclidiana);0.9978;0.9964;1.0000;0.9982;0.00;7.45
+KNN Classificação (Distância Euclidiana);0.9978;0.9964;1.0000;0.9982;0.00;7.43
+KNN Classificação (Distância Euclidiana);1.0000;1.0000;1.0000;1.0000;0.00;7.36
+KNN Classificação (Distância Euclidiana);1.0000;1.0000;1.0000;1.0000;0.00;7.47
+KNN Classificação (Distância Euclidiana);1.0000;1.0000;1.0000;1.0000;0.00;7.38

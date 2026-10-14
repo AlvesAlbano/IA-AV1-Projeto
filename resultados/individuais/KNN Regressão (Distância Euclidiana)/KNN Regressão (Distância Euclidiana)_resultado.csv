@@ -1,0 +1,11 @@
+Classificador;R2;R2 Ajustado;Tempo Treino (s);Tempo Teste (s)
+KNN Regressão (Distância Euclidiana);0.2189;0.2152;0.00;45.34
+KNN Regressão (Distância Euclidiana);0.6650;0.6634;0.00;42.09
+KNN Regressão (Distância Euclidiana);0.4024;0.3995;0.00;46.52
+KNN Regressão (Distância Euclidiana);0.6993;0.6979;0.00;42.64
+KNN Regressão (Distância Euclidiana);0.7181;0.7168;0.00;42.74
+KNN Regressão (Distância Euclidiana);0.4214;0.4187;0.00;42.76
+KNN Regressão (Distância Euclidiana);0.2017;0.1979;0.00;42.70
+KNN Regressão (Distância Euclidiana);0.6904;0.6890;0.00;42.39
+KNN Regressão (Distância Euclidiana);0.6092;0.6074;0.00;42.64
+KNN Regressão (Distância Euclidiana);0.6920;0.6905;0.00;42.55

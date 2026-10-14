@@ -1,0 +1,4 @@
+Classificador;R2;R2 Ajustado;Tempo Treino (s);Tempo Teste (s)
+Regressão Linear Multipla;0.7546 +- 0.1424;0.7535 +- 0.1431;0.0000 +- 0.0000;0.0000 +- 0.0000
+KNN Regressão (Distância Euclidiana);0.5318 +- 0.2036;0.5296 +- 0.2046;0.0000 +- 0.0000;43.2370 +- 1.4599
+KNN Regressão (Distância Manhattan);0.5336 +- 0.2055;0.5314 +- 0.2064;0.0000 +- 0.0000;39.7630 +- 2.0970
