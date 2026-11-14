@@ -4,12 +4,19 @@ import numpy as np
 from tabela import tabela_informatica_final_regressao,tabela_informatica_final_classificacao
 
 def medidas_metricas_regressao(dados_csv):
-    r2 = dados_csv[:,0]
-    r2_ajustado = dados_csv[:,1]
+    print(dados_csv)
+    mse = dados_csv[:,0]
+    rmse = dados_csv[:,1]
+    mae = dados_csv[:2]
+    r2 = dados_csv[:,3]
+    r2_ajustado = dados_csv[:,4]
     tempo_treino = dados_csv[:,-2]
     tempo_teste = dados_csv[:,-1]
     
     metricas = {
+        "MSE": mse,
+        "RMSE": rmse,
+        "MAE": mae,
         "R2": r2,
         "R2 Ajustado": r2_ajustado,
         "Tempo Treino (s)": tempo_treino,
@@ -36,11 +43,11 @@ def medidas_metricas_regressao(dados_csv):
     return resultados
 
 def medidas_metricas_classificacao(dados_csv):
-
     acuracia = dados_csv[:,0]
     precisao = dados_csv[:,1]
     revocacao = dados_csv[:,2]
-    f1_score = dados_csv[:,3]
+    especificidade = dados_csv[:,3]
+    f1_score = dados_csv[:,4]
     tempo_treino = dados_csv[:,-2]
     tempo_teste = dados_csv[:,-1]
     
@@ -48,6 +55,7 @@ def medidas_metricas_classificacao(dados_csv):
         "Acurácia": acuracia,
         "Precisão": precisao,
         "Revocação": revocacao,
+        "Especificidade": especificidade,
         "F1-Score": f1_score,
         "Tempo Treino (s)": tempo_treino,
         "Tempo Teste (s)": tempo_teste
@@ -67,12 +75,12 @@ def medidas_metricas_classificacao(dados_csv):
     # print(resultados)
     return resultados
 
-if __name__ == "__main__":
+def main():
     caminho_base = "./resultados/individuais"
 
     modelos = {
-        "regressão":["Regressão Linear Multipla","KNN Regressão (Distância Euclidiana)","KNN Regressão (Distância Manhattan)"],
-        "classificação":["KNN Classificação (Distância Euclidiana)","KNN Classificação (Distância Manhattan)","Naive Baiyes (Univariado)"],
+        "regressão":["Regressão Linear Multipla","KNN Regressão (Distância Euclidiana)","KNN Regressão (Distância Manhattan)","MLP - sigmoid","MLP - reLu","MLP - tanh"],
+        "classificação":["KNN Classificação (Distância Euclidiana)","KNN Classificação (Distância Manhattan)","Naive Baiyes (Univariado)","Naive Baiyes (Multivariado)","Perceptron"],
     }
 
     for pasta in os.listdir(caminho_base):
@@ -90,14 +98,14 @@ if __name__ == "__main__":
                             categoria_modelo = categoria
 
                     if categoria_modelo == "regressão":
-                        dados_csv = np.loadtxt(caminho_csv,delimiter=";",skiprows=1,usecols=(1,2,3,4))
+                        dados_csv = np.loadtxt(caminho_csv,delimiter=";",skiprows=1,usecols=(1,2,3,4,5,6,7))
                         # print(dados_csv)
 
                         resultado_medidas_metricas = medidas_metricas_regressao(dados_csv)
                         tabela_informatica_final_regressao(nome_modelo,resultado_medidas_metricas)
 
                     elif categoria_modelo == "classificação":
-                        dados_csv = np.loadtxt(caminho_csv,delimiter=";",skiprows=1,usecols=(1,2,3,4,5,6))
+                        dados_csv = np.loadtxt(caminho_csv,delimiter=";",skiprows=1,usecols=(1,2,3,4,5,6,7))
 
                         resultado_medidas_metricas = medidas_metricas_classificacao(dados_csv)
                         tabela_informatica_final_classificacao(nome_modelo,resultado_medidas_metricas)

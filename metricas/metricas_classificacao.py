@@ -28,3 +28,9 @@ def precision(VP,FP):
 
 def recall(VP,FN):
     return VP / (FN + VP)
+
+def specificity(VN, FP):
+    # if VN + FP == 0:
+    #     return np.nan
+
+    return VN / (VN + FP)

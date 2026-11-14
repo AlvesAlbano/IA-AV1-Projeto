@@ -1,11 +1,11 @@
-Classificador;R2;R2 Ajustado;Tempo Treino (s);Tempo Teste (s)
-Regressão Linear Multipla;0.9934;0.9934;0.00;0.00
-Regressão Linear Multipla;0.6661;0.6645;0.00;0.00
-Regressão Linear Multipla;0.8462;0.8455;0.00;0.00
-Regressão Linear Multipla;0.6465;0.6449;0.00;0.00
-Regressão Linear Multipla;0.6372;0.6355;0.00;0.00
-Regressão Linear Multipla;0.8963;0.8958;0.00;0.00
-Regressão Linear Multipla;0.9221;0.9218;0.00;0.00
-Regressão Linear Multipla;0.6356;0.6339;0.00;0.00
-Regressão Linear Multipla;0.6612;0.6596;0.00;0.00
-Regressão Linear Multipla;0.6415;0.6398;0.00;0.00
+Classificador;MSE;RMSE;MAE;R2;R2 Ajustado;Tempo Treino (s);Tempo Teste (s)
+Regressão Linear Multipla;7819548.2273;2796.3455;1959.1409;0.9934;0.9934;0.00;0.00
+Regressão Linear Multipla;7801452.6899;2793.1081;1830.7193;0.6661;0.6645;0.00;0.00
+Regressão Linear Multipla;11287921.9109;3359.7503;1900.6485;0.8462;0.8455;0.00;0.00
+Regressão Linear Multipla;6774086.8930;2602.7076;1784.8835;0.6465;0.6449;0.00;0.00
+Regressão Linear Multipla;6739612.3368;2596.0763;1809.4098;0.6372;0.6355;0.00;0.00
+Regressão Linear Multipla;7107001.9258;2665.8961;1777.9242;0.8963;0.8958;0.00;0.00
+Regressão Linear Multipla;98926349.1902;9946.1726;2159.4245;0.9221;0.9218;0.00;0.00
+Regressão Linear Multipla;7168285.6342;2677.3654;1823.6446;0.6356;0.6339;0.00;0.00
+Regressão Linear Multipla;5572874.5304;2360.6937;1701.1351;0.6612;0.6596;0.00;0.00
+Regressão Linear Multipla;7735954.8807;2781.3585;1919.9139;0.6415;0.6398;0.00;0.00

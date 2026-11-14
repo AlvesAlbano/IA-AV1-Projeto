@@ -3,6 +3,7 @@ import numpy as np
 
 from modelos.classificador_bayes import NaiveBayes
 from modelos.knn import KNN
+from redes_neurais.perceptron import Perceptron
 
 from tabela import tabela_informativa_classificacao
 from metricas.metricas_classificacao import *
@@ -83,6 +84,57 @@ def classificacao_univariada(X_train, X_test, y_train, y_test):
 
     tabela_informativa_classificacao("Naive Baiyes (Univariado)",matriz_conf,tempo_treino,tempo_teste)
 
+def classificacao_multivariada(X_train, X_test, y_train, y_test):
+    modelo = NaiveBayes(tipo_densidade="multivariado")
+
+    inicio = time.perf_counter()
+    modelo.fit(X_train,y_train)
+    fim = time.perf_counter()
+
+    tempo_treino = fim - inicio
+    print(f"treino durou {tempo_treino:.2f}s")
+
+    inicio = time.perf_counter()
+    y_pred = modelo.predict(X_test)
+    fim = time.perf_counter()
+
+    tempo_teste = fim - inicio
+    print(f"predição durou {tempo_teste:.2f}s")
+
+    classes, matriz_conf = matriz_confusao(y_pred,y_test)
+
+    print(classes)
+    print(matriz_conf)
+
+    tabela_informativa_classificacao("Naive Baiyes (Multivariado)",matriz_conf,tempo_treino,tempo_teste)
+
+def classificacao_perceptron(X_train, X_test, y_train, y_test):
+    modelo = Perceptron(
+        learning_rate=0.1,
+        epochs=125
+    )
+
+    inicio = time.perf_counter()
+    modelo.fit(X_train,y_train)
+    fim = time.perf_counter()
+
+    tempo_treino = fim - inicio
+    print(f"treino durou {tempo_treino:.2f}s")
+
+    inicio = time.perf_counter()
+    y_pred = modelo.predict(X_test)
+    fim = time.perf_counter()
+
+    tempo_teste = fim - inicio
+    print(f"predição durou {tempo_teste:.2f}s")
+
+    classes, matriz_conf = matriz_confusao(y_pred,y_test)
+
+    print(classes)
+    print(matriz_conf)
+
+    tabela_informativa_classificacao("Perceptron",matriz_conf,tempo_treino,tempo_teste)
+
 def kfold_classificacao(X,y):
     k_valor = 15
 
@@ -102,7 +154,13 @@ def kfold_classificacao(X,y):
         print("---------------- CLASSIFICAÇÃO BAYESIANA USANDO A DENSIDADE UNIVARIADA ----------------")
         classificacao_univariada(X_train, X_test, y_train, y_test)
 
-if __name__ == "__main__":
+        print("---------------- CLASSIFICAÇÃO BAYESIANA USANDO A DENSIDADE MULTIVARIADA ----------------")
+        classificacao_multivariada(X_train, X_test, y_train, y_test)
+
+        print("---------------- CLASSIFICAÇÃO USANDO O PERCEPTRON ----------------")
+        classificacao_perceptron(X_train, X_test, y_train, y_test)
+
+def main():
     data_csv = np.loadtxt("./data/csv_result-dataset_44_spambase.csv",delimiter=",",skiprows=1)
 
     X = data_csv[:,:-1]

@@ -13,6 +13,9 @@ def tabela_informativa_regressao(X_test,y_test,y_pred,nome_modelo,tempo_treino,t
     nome_csv = pasta / f"{nome_modelo}_resultado.csv"
     arquivo_existe = nome_csv.exists()
 
+    mse = mean_square_error(y_test,y_pred)
+    rmse = root_mean_squared_error(y_test,y_pred)
+    mae = mean_absolute_error(y_test,y_pred)
     r2 = r2_score(y_test,y_pred)
     r2_ajustado = r2_score_ajustado(r2,X_test)
 
@@ -22,6 +25,9 @@ def tabela_informativa_regressao(X_test,y_test,y_pred,nome_modelo,tempo_treino,t
         if not arquivo_existe:
             escritor.writerow([
                 "Classificador",
+                "MSE",
+                "RMSE",
+                "MAE",
                 "R2",
                 "R2 Ajustado",
                 "Tempo Treino (s)",
@@ -30,6 +36,9 @@ def tabela_informativa_regressao(X_test,y_test,y_pred,nome_modelo,tempo_treino,t
 
         escritor.writerow([
             nome_modelo,
+            f"{mse:.4f}",
+            f"{rmse:.4f}",
+            f"{mae:.4f}",
             f"{r2:.4f}",
             f"{r2_ajustado:.4f}",
             f"{tempo_treino:.2f}",
@@ -55,6 +64,7 @@ def tabela_informativa_classificacao(nome_modelo,matriz_confusao,tempo_treino,te
     precisao = precision(VP,FP)
     revocacao = recall(VP,FN)
     f1 = f1_score(precisao,revocacao)
+    especificidade = specificity(VN,FP)
 
     with open(nome_csv, "a", newline="", encoding="utf-8") as arquivo:
         escritor = csv.writer(arquivo, delimiter=";")
@@ -65,6 +75,7 @@ def tabela_informativa_classificacao(nome_modelo,matriz_confusao,tempo_treino,te
                 "Acurácia",
                 "Precisão",
                 "Revocação",
+                "Especificidade",
                 "F1-Score",
                 "Tempo Treino (s)",
                 "Tempo Teste (s)"
@@ -75,6 +86,7 @@ def tabela_informativa_classificacao(nome_modelo,matriz_confusao,tempo_treino,te
             f"{acuracia:.4f}",
             f"{precisao:.4f}",
             f"{revocacao:.4f}",
+            f"{especificidade:.4f}",
             f"{f1:.4f}",
             f"{tempo_treino:.2f}",
             f"{tempo_teste:.2f}"
@@ -87,6 +99,11 @@ def tabela_informatica_final_regressao(nome_modelo,medidas_metricas):
     nome_arquivo = "tabela_informatica_final_regressão.csv"
     arquivo_existe = Path(nome_arquivo).exists()
 
+    mse_media,mse_desvio_padrao = medidas_metricas["MSE"]
+    rmse_media,rmse_desvio_padrao = medidas_metricas["RMSE"]
+    mae_media,mae_desvio_padrao = medidas_metricas["MAE"]
+    r2_media,r2_desvio_padrao = medidas_metricas["RMSE"]
+    r2_media,r2_desvio_padrao = medidas_metricas["MAE"]
     r2_media,r2_desvio_padrao = medidas_metricas["R2"]
     r2_ajustado_media,r2_ajustado_desvio_padrao = medidas_metricas["R2 Ajustado"]
     tempo_treino_media,tempo_treino_desvio_padrao = medidas_metricas["Tempo Treino (s)"]
@@ -98,6 +115,9 @@ def tabela_informatica_final_regressao(nome_modelo,medidas_metricas):
         if not arquivo_existe:
             escritor.writerow([
                 "Classificador",
+                "MSE",
+                "RMSE",
+                "MAE",
                 "R2",
                 "R2 Ajustado",
                 "Tempo Treino (s)",
@@ -106,6 +126,9 @@ def tabela_informatica_final_regressao(nome_modelo,medidas_metricas):
 
         escritor.writerow([
             nome_modelo,
+            f"{mse_media:.4f} +- {mse_desvio_padrao:.4f}",
+            f"{rmse_media:.4f} +- {rmse_desvio_padrao:.4f}",
+            f"{mae_media:.4f} +- {mae_desvio_padrao:.4f}",
             f"{r2_media:.4f} +- {r2_desvio_padrao:.4f}",
             f"{r2_ajustado_media:.4f} +- {r2_ajustado_desvio_padrao:.4f}",
             f"{tempo_treino_media:.4f} +- {tempo_treino_desvio_padrao:.4f}",
@@ -122,6 +145,7 @@ def tabela_informatica_final_classificacao(nome_modelo,medidas_metricas):
     acuracia_media, acuracia_desvio_padrao = medidas_metricas["Acurácia"]
     precisao_media, precisao_desvio_padrao = medidas_metricas["Precisão"]
     revocacao_media, revocacao_desvio_padrao = medidas_metricas["Revocação"]
+    especificidade_media, especificidade_desvio_padrao = medidas_metricas["Especificidade"]
     f1_score_media, f1_score_desvio_padrao = medidas_metricas["F1-Score"]
 
     tempo_treino_media, tempo_treino_desvio_padrao = medidas_metricas["Tempo Treino (s)"]
@@ -136,6 +160,7 @@ def tabela_informatica_final_classificacao(nome_modelo,medidas_metricas):
                 "Acurácia",
                 "Precisão",
                 "Revocação",
+                "Especificidade",
                 "F1-Score",
                 "Tempo Treino (s)",
                 "Tempo Teste (s)"
@@ -146,6 +171,7 @@ def tabela_informatica_final_classificacao(nome_modelo,medidas_metricas):
             f"{acuracia_media:.4f} +- {acuracia_desvio_padrao:.4f}",
             f"{precisao_media:.4f} +- {precisao_desvio_padrao:.4f}",
             f"{revocacao_media:.4f} +- {revocacao_desvio_padrao:.4f}",
+            f"{especificidade_media:.4f} +- {especificidade_desvio_padrao:.4f}",
             f"{f1_score_media:.4f} +- {f1_score_desvio_padrao:.4f}",
             f"{tempo_treino_media:.4f} +- {tempo_treino_desvio_padrao:.4f}",
             f"{tempo_teste_media:.4f} +- {tempo_teste_desvio_padrao:.4f}"
