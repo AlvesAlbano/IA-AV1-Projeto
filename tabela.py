@@ -4,6 +4,40 @@ from pathlib import Path
 from metricas.metricas_classificacao import *
 from metricas.metricas_regressao import *
 
+def tabela_matriz_confusao(nome_modelo,matriz_confusao):
+    VP = matriz_confusao[0][0]
+    FN = matriz_confusao[0][1]
+    FP = matriz_confusao[1][0]
+    VN = matriz_confusao[1][1]
+
+    # Cria a pasta automaticamente caso ela não exista
+    pasta = Path("./resultados/matriz_confusao") / nome_modelo
+    pasta.mkdir(parents=True, exist_ok=True)
+
+    # Caminho do arquivo CSV
+    nome_csv = pasta / f"{nome_modelo}_matriz_confusao.csv"
+    arquivo_existe = nome_csv.exists()
+
+    with open(nome_csv, "a", newline="", encoding="utf-8") as arquivo:
+        escritor = csv.writer(arquivo, delimiter=";")
+
+        if not arquivo_existe:
+            escritor.writerow([
+                "Modelo",
+                "VP",
+                "FN",
+                "FP",
+                "VN"
+            ])
+
+        escritor.writerow([
+            nome_modelo,
+            VP,
+            FN,
+            FP,
+            VN
+        ])
+
 def tabela_informativa_regressao(X_test,y_test,y_pred,nome_modelo,tempo_treino,tempo_teste):
     # Cria a pasta automaticamente caso ela não exista
     pasta = Path("./resultados/individuais") / nome_modelo

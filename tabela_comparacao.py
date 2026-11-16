@@ -1,6 +1,8 @@
 import os
-
+import csv
 import numpy as np
+
+from pathlib import Path
 from tabela import tabela_informatica_final_regressao,tabela_informatica_final_classificacao
 
 def medidas_metricas_regressao(dados_csv):
@@ -75,6 +77,54 @@ def medidas_metricas_classificacao(dados_csv):
     # print(resultados)
     return resultados
 
+def matriz_confusao_final(nome_modelo):
+
+    caminho_matriz = os.path.join(
+        "./resultados/matriz_confusao",
+        nome_modelo,
+        f"{nome_modelo}_matriz_confusao.csv"
+    )
+
+    if os.path.exists(caminho_matriz):
+
+        matriz = np.loadtxt(
+            caminho_matriz,
+            delimiter=";",
+            skiprows=1,
+            usecols=(1,2,3,4)
+        )
+        VP = matriz[:,0]
+        FN = matriz[:,1]
+        FP = matriz[:,2]
+        VN = matriz[:,3]
+
+        nome_arquivo = "tabela_matriz_confusao_final.csv"
+        arquivo_existe = Path(nome_arquivo).exists()
+
+        with open(nome_arquivo, "a", newline="", encoding="utf-8") as arquivo:
+            escritor = csv.writer(arquivo, delimiter=";")
+
+            if not arquivo_existe:
+                escritor.writerow([
+                    "Modelo",
+                    "VP",
+                    "FN",
+                    "FP",
+                    "VN"
+                ])
+
+            escritor.writerow([
+                nome_modelo,
+                f"{VP.mean():.0f}",
+                f"{FN.mean():.0f}",
+                f"{FP.mean():.0f}",
+                f"{VN.mean():.0f}"
+            ])
+
+    else:
+        print(f"Matriz de confusão não encontrada para {nome_modelo}")
+        return None
+
 def main():
     caminho_base = "./resultados/individuais"
 
@@ -109,3 +159,4 @@ def main():
 
                         resultado_medidas_metricas = medidas_metricas_classificacao(dados_csv)
                         tabela_informatica_final_classificacao(nome_modelo,resultado_medidas_metricas)
+                        matriz_confusao_final(nome_modelo)

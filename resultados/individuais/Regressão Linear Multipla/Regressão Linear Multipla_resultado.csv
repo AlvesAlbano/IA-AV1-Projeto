@@ -1,5 +1,5 @@
 Classificador;MSE;RMSE;MAE;R2;R2 Ajustado;Tempo Treino (s);Tempo Teste (s)
-Regressão Linear Multipla;7819548.2273;2796.3455;1959.1409;0.9934;0.9934;0.00;0.00
+Regressão Linear Multipla;7819548.2273;2796.3455;1959.1409;0.9934;0.9934;0.02;0.00
 Regressão Linear Multipla;7801452.6899;2793.1081;1830.7193;0.6661;0.6645;0.00;0.00
 Regressão Linear Multipla;11287921.9109;3359.7503;1900.6485;0.8462;0.8455;0.00;0.00
 Regressão Linear Multipla;6774086.8930;2602.7076;1784.8835;0.6465;0.6449;0.00;0.00

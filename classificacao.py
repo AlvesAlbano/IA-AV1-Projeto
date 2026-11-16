@@ -5,7 +5,7 @@ from modelos.classificador_bayes import NaiveBayes
 from modelos.knn import KNN
 from redes_neurais.perceptron import Perceptron
 
-from tabela import tabela_informativa_classificacao
+from tabela import tabela_informativa_classificacao,tabela_matriz_confusao
 from metricas.metricas_classificacao import *
 from validacao_cruzada import k_fold_estratificado_indices
 
@@ -133,6 +133,7 @@ def classificacao_perceptron(X_train, X_test, y_train, y_test):
     print(classes)
     print(matriz_conf)
 
+    tabela_matriz_confusao("Perceptron",matriz_conf)
     tabela_informativa_classificacao("Perceptron",matriz_conf,tempo_treino,tempo_teste)
 
 def kfold_classificacao(X,y):

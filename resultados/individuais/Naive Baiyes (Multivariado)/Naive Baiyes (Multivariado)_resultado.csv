@@ -1,11 +1,11 @@
 Classificador;Acurácia;Precisão;Revocação;Especificidade;F1-Score;Tempo Treino (s);Tempo Teste (s)
-Naive Baiyes (Multivariado);0.8829;0.8387;0.9630;0.7936;0.8966;0.13;0.44
-Naive Baiyes (Multivariado);0.8633;0.7993;0.9696;0.7576;0.8762;0.01;0.35
-Naive Baiyes (Multivariado);0.8395;0.7634;0.9638;0.7250;0.8520;0.10;0.48
-Naive Baiyes (Multivariado);0.8717;0.8208;0.9622;0.7748;0.8859;0.10;0.43
-Naive Baiyes (Multivariado);0.8261;0.7527;0.9502;0.7113;0.8400;0.11;0.43
-Naive Baiyes (Multivariado);0.8696;0.8172;0.9620;0.7713;0.8837;0.02;0.28
-Naive Baiyes (Multivariado);0.8522;0.7885;0.9607;0.7446;0.8661;0.01;0.33
-Naive Baiyes (Multivariado);0.8326;0.7455;0.9720;0.7114;0.8438;0.11;0.38
-Naive Baiyes (Multivariado);0.8715;0.8165;0.9660;0.7723;0.8850;0.06;0.31
-Naive Baiyes (Multivariado);0.8671;0.7986;0.9780;0.7586;0.8792;0.10;0.41
+Naive Baiyes (Multivariado);0.8829;0.8387;0.9630;0.7936;0.8966;0.01;0.20
+Naive Baiyes (Multivariado);0.8633;0.7993;0.9696;0.7576;0.8762;0.01;0.21
+Naive Baiyes (Multivariado);0.8395;0.7634;0.9638;0.7250;0.8520;0.00;0.20
+Naive Baiyes (Multivariado);0.8717;0.8208;0.9622;0.7748;0.8859;0.02;0.48
+Naive Baiyes (Multivariado);0.8261;0.7527;0.9502;0.7113;0.8400;0.09;0.64
+Naive Baiyes (Multivariado);0.8696;0.8172;0.9620;0.7713;0.8837;0.00;0.18
+Naive Baiyes (Multivariado);0.8522;0.7885;0.9607;0.7446;0.8661;0.01;0.19
+Naive Baiyes (Multivariado);0.8326;0.7455;0.9720;0.7114;0.8438;0.05;0.20
+Naive Baiyes (Multivariado);0.8715;0.8165;0.9660;0.7723;0.8850;0.01;0.19
+Naive Baiyes (Multivariado);0.8671;0.7986;0.9780;0.7586;0.8792;0.12;0.43
