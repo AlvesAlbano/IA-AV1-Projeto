@@ -273,7 +273,7 @@ def grafico_classificacao(csv):
 # GRÁFICO DE REGRESSÃO
 # ==========================================
 
-def grafico_regressao(csv):
+def grafico_regressao(csv): 
 
     metricas = [
         "MSE",
@@ -390,6 +390,16 @@ def grafico_tempo_regressao(csv):
 def grafico_metricas_erro_regressao(csv):
 
     modelos, colunas, medias, desvios = separar_dados(csv)
+
+    # Classificadores que não devem aparecer nos gráficos
+    excluir = ["MLP - tanh", "MLP - sigmoid", "MLP - reLu"]
+
+    # Criar máscara para manter apenas os modelos desejados
+    mascara = ~np.isin(modelos, excluir)
+
+    modelos = np.array(modelos)[mascara]
+    medias = medias[mascara]
+    desvios = desvios[mascara]
 
     metricas = ["MSE", "RMSE", "MAE"]
 
